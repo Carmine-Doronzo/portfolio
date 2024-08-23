@@ -9,6 +9,7 @@
         <div v-if="store.data.info">
             <p>Repo name: {{ store.data.info.name }}</p>
             <p>Owner: {{ store.data.info.full_name.split('/')[0] }}</p>
+            <p>languages: <span v-for="language in store.data.info.only_languages">{{ language + ' ' }}</span></p>
         </div>
 
     </div>

@@ -22,9 +22,9 @@ export const store = reactive({
         }
       }).then((res) => {
         this.projects = res.data
-        
+
         store.status(this.projects, this.projectsToView, this.projectsNone)
-        
+
         this.projects.forEach(project => {
           store.octokit.request(`GET /repos/{owner}/{repo}/contents/${project.name}.png`, {
             owner: project.full_name.split('/')[0],
@@ -36,33 +36,44 @@ export const store = reactive({
 
           })
             .then((res) => {
-              
+
               project['image'] = res.data.download_url
 
             });
 
         });
 
-        
+
       })
     },
 
     async getSingleProjetct(id) {
 
-      return await store.octokit.request(`GET /repositories/${id}`, {
-        
+      await store.octokit.request(`GET /repositories/${id}`, {
+
         headers: {
           'X-GitHub-Api-Version': '2022-11-28'
         }
 
-      })
-        .then((res) => {
+      }).then((res) => {
 
-          this.info = res.data
+        this.info = res.data
 
+        store.octokit.request(`GET /repositories/${id}/languages`, {
 
+          headers: {
+            'X-GitHub-Api-Version': '2022-11-28'
+          }
 
-        });
+        }).then((res) => {
+          //console.log(res.data)
+          let obj = Object.keys(res.data)
+          this.info['only_languages'] = obj
+
+        })
+
+      });
+
     }
   },
 
@@ -82,19 +93,19 @@ export const store = reactive({
 
 
           switch (atob(res.data.content)) {
-            case 'finish' :
-              project ['status'] = atob(res.data.content)
+            case 'finish':
+              project['status'] = atob(res.data.content)
               arrayGood.push(project)
 
               break;
 
             case 'work in progress':
-              project ['status'] = atob(res.data.content)
+              project['status'] = atob(res.data.content)
               arrayGood.push(project)
               break;
 
             case 'none':
-              project ['status'] = atob(res.data.content)
+              project['status'] = atob(res.data.content)
               arrayBad.push(project)
               break;
           }
