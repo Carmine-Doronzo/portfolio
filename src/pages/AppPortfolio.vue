@@ -1,20 +1,18 @@
 <template>
     <div class="container py-4">
         <ul class="row gy-2 gap-2 justify-content-center p-0">
-            <ProjectCardComponent v-for="(projectItem, i) in store.data.projectsToView" :key="projectItem.id"
-                :item="projectItem" :item2="i" />
+            <ProjectCardComponent v-for="(projectItem) in elementsPaginate" :key="projectItem.id" :item="projectItem" />
         </ul>
 
 
-        <ul class="list-unstyled d-flex gap-3 justify-content-center" v-if="store.data.lastPage">
-            <li style="cursor: pointer;" class="badge text-bg-success" @click="nextPage(page)" v-for="page in store.data.lastPage"
+        <ul class="list-unstyled d-flex gap-3 justify-content-center">
+            <li style="cursor: pointer;" class="badge text-bg-success" @click="goToPage(page)" v-for="page in totPage"
                 :key="page">
                 {{ page }}
             </li>
         </ul>
 
-        <!-- <button @click="vaiAllaPagina(paginaPrecedente)" :disabled="!paginaPrecedente">Pagina precedente</button>
-        <button @click="vaiAllaPagina(paginaSuccessiva)" :disabled="!paginaSuccessiva">Pagina successiva</button> -->
+        
 
     </div>
 </template>
@@ -30,28 +28,41 @@ export default {
     data() {
         return {
 
-             currentPage: 1,
-             
+            currentPage: 1,
+
             store,
-            // paginaCorrente: 2,
-            perPagina: 15
+
+            perPage: 6
         }
     },
 
     methods: {
 
-        
-        nextPage(page) {
-            this.currentPage = page
-            this.store.data.fetchData()
+
+        goToPage(page) {
+            if (page) {
+                this.currentPage = page
+            }
+
+            
         },
     },
-    
+
+    computed: {
+        elementsPaginate() {
+            const offset = (this.currentPage - 1) * this.perPage;
+            return this.store.data.projectsToView.slice(offset, offset + this.perPage);
+        },
+        totPage() {
+            return Math.ceil(this.store.data.projectsToView.length / this.perPage);
+        },
+       
+    },
 
     mounted() {
-        //this.store.data.fetchData()
-       
-        this.store.data.fetchData()
+
+
+
     }
 }
 

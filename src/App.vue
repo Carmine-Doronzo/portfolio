@@ -16,13 +16,8 @@ export default {
   },
   mounted() {
     
-    
-
-   
-    
-    
-    
-    
+    this.store.data.fetchData()
+  
   }
 }
 
