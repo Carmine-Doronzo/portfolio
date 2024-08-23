@@ -1,7 +1,7 @@
 <template>
     <div class="container py-4">
         <ul class="row gy-2 gap-2 justify-content-center p-0">
-            <ProjectCardComponent v-for="(projectItem, i) in store.data.projects" :key="projectItem.id"
+            <ProjectCardComponent v-for="(projectItem, i) in store.data.projectsToView" :key="projectItem.id"
                 :item="projectItem" :item2="i" />
         </ul>
 
@@ -43,15 +43,15 @@ export default {
         
         nextPage(page) {
             this.currentPage = page
-            this.store.data.fetchData(this.perPagina,this.currentPage)
+            this.store.data.fetchData()
         },
     },
     
 
     mounted() {
-        this.store.data.fetchData(this.perPagina,this.currentPage)
+        //this.store.data.fetchData()
        
-        
+        this.store.data.fetchData()
     }
 }
 
