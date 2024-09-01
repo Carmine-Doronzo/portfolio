@@ -295,7 +295,7 @@ export const store = reactive({
             'accept': 'application/vnd.github+json'
           }
         }).then(res => this.info['image'].push(res.data.download_url)));
-
+        console.log(this.info)
         await Promise.all(imageRequests);
       } catch (error) {
         console.error(`Error fetching project ${id}:`, error);

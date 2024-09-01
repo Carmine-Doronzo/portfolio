@@ -2,10 +2,11 @@
    <header>
     <div class="container">
         <div class="d-flex justify-content-between align-items-center p-0">
-            <RouterLink to="/">Logo</RouterLink>
+            <RouterLink to="/"><img src="/logo.png" width="110" height="90"alt=""></RouterLink>
 
             <nav class="d-flex justify-content-between align-items-center gap-3">
                 <RouterLink :to="{ name: 'home'}">Home</RouterLink>
+                <RouterLink :to="{ name: 'about'}">About</RouterLink>
                 <RouterLink :to="{ name: 'portfolio'}">Portfolio</RouterLink>
                 <RouterLink :to="{ name: 'contact'}">Contact</RouterLink>
             </nav>
