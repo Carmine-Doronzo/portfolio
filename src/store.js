@@ -248,8 +248,9 @@ export const store = reactive({
         ]);
 
         this.info = repoRes.data;
-        this.info['readme_description'] = marked(decodeURIComponent(encodeURIComponent(atob(readmeRes.data.content))));
+        this.info['readme_description'] = marked(decodeURIComponent(escape(atob(readmeRes.data.content))));
         this.info['only_languages'] = Object.keys(langRes.data);
+        this.info['count_languages'] = Object.values(langRes.data);
         this.info['contributors'] = contribRes.data;
 
         this.info['image'] = [];

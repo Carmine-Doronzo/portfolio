@@ -1,48 +1,42 @@
 <template>
-    <div class="container py-4">
-    <ul class="row gy-2 gap-2 justify-content-center p-0">
-        <ProjectCardComponent v-for="(projectItem) in elementsPaginate" :key="projectItem.id" :item="projectItem" class="col-12 col-md-6 col-lg-3" />
-    </ul>
+    <div class="container-fluid py-4">
+        <div class="row gy-2 gap-4 justify-content-center">
+            <ProjectCardComponent v-for="(projectItem) in elementsPaginate" :key="projectItem.id" :item="projectItem" class="col-12 col-md-6 col-lg-3 project-card" />
+        </div>
 
-    <ul class="list-unstyled d-flex gap-3 justify-content-center">
-        <li style="cursor: pointer;" class="badge text-bg-success" @click="goToPage(page)" v-for="page in totPage" :key="page">
-            {{ page }}
-        </li>
-    </ul>
-</div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item" v-for="page in totPage" :key="page">
+                <button class="page-link" @click="goToPage(page)">
+                    {{ page }}
+                </button>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
-
 import ProjectCardComponent from '../components/ProjectCardComponent.vue';
 import { store } from '../store';
+
 export default {
+    name: 'ProjectListComponent',
     components: {
         ProjectCardComponent
     },
     data() {
         return {
-
             currentPage: 1,
-
             store,
-
             perPage: 6
         }
     },
-
     methods: {
-
-
         goToPage(page) {
             if (page) {
-                this.currentPage = page
+                this.currentPage = page;
             }
-
-            
         },
     },
-
     computed: {
         elementsPaginate() {
             const offset = (this.currentPage - 1) * this.perPage;
@@ -51,19 +45,37 @@ export default {
         totPage() {
             return Math.ceil(this.store.data.projectsToView.length / this.perPage);
         },
-       
     },
-
     mounted() {
-
-
-
+        // Any additional logic on mount
     }
 }
-
-
-
-
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+
+.page-link {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8 16px;
+    margin-right: 10px;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.project-card {
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.1);
+}
+</style>
