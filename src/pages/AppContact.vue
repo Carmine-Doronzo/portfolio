@@ -22,7 +22,7 @@
                 aria-describedby="inputGroup-sizing-sm">
         </div>
 
-        <button class="btn btn-primary">Invia</button>
+        <button class="btn btn-primary">Inviaò</button>
 
     </form>
 
