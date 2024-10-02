@@ -1,10 +1,10 @@
 <template>
-    <div class="container-fluid py-4">
+    <div class="container-fluid">
         <div class="row gy-2 gap-4 justify-content-center">
-            <ProjectCardComponent v-for="(projectItem) in elementsPaginate" :key="projectItem.id" :item="projectItem" class="col-12 col-md-6 col-lg-3 project-card" />
+            <ProjectCardComponent v-for="(projectItem) in elementsPaginate" :key="projectItem.id" :item="projectItem" class="col-12 col-md-6 col-lg-3 m-0 project-card" />
         </div>
 
-        <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center m-0">
             <li class="page-item" v-for="page in totPage" :key="page">
                 <button class="page-link" @click="goToPage(page)">
                     {{ page }}
@@ -47,13 +47,21 @@ export default {
         },
     },
     mounted() {
-        // Any additional logic on mount
+        this.store.loading.on()
+        if(this.store.data.projectsToView.length > 20){
+            this.store.loading.off()
+        }
+
+    },
+    updated(){
+        if(this.store.data.projectsToView.length > 20){
+            this.store.loading.off()
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-
 
 .page-link {
     cursor: pointer;

@@ -228,6 +228,7 @@ export const store = reactive({
      * rispetto all’esecuzione sequenziale */
 
     async getSingleProject(id) {
+      this.info = null
       try {
         const [repoRes, readmeRes, langRes, contribRes] = await Promise.all([
           store.octokit.request(`GET /repositories/${id}`, {
@@ -330,6 +331,15 @@ export const store = reactive({
     });
 
     await Promise.all(statusRequests);
+  },
+
+  loading: {
+    state: false,
+   
+
+    on() {this.state = true},
+    off() { this.state = false },
   }
+
 });
 
