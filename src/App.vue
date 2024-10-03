@@ -38,7 +38,7 @@ export default {
       <HeaderComponent />
       <div class="container">
         <div class="row">
-          <RouterView class="overflow-y-auto" style="color: white; height: calc(100vh - 140px);" />
+          <RouterView class="overflow-y-auto" style="color: white; height: calc(100vh - 199.66px);" />
         </div>
       </div>
       <FooterComponent />
@@ -66,5 +66,37 @@ export default {
   height: auto;
   z-index: -1;
   transform: translate(-50%, -50%);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: lime;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff00;
+}
+
+.matrix-button {
+  background-color: black;
+  color: lime;
+  border: 2px solid lime;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.matrix-button:hover {
+  background-color: lime;
+  color: black;
 }
 </style>
