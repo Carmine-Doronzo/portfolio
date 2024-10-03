@@ -1,7 +1,7 @@
 <script>
 import HeaderComponent from './components/HeaderComponent.vue'
 import FooterComponent from './components/FooterComponent.vue';
-import {store} from './store'
+import { store } from './store'
 import LoaderComponent from './components/LoaderComponent.vue';
 export default {
   components: {
@@ -16,34 +16,35 @@ export default {
     }
   },
   methods: {
-    
+
   },
   mounted() {
-    
+
     this.store.data.fetchData()
-  
+
   }
 }
 
 </script>
 
 <template>
-  <LoaderComponent v-if="store.loading.state"/>
-  <div class="video-background overflow-y-scroll">
-  <video autoplay muted loop id="myVideo">
-    <source src="/code-cascade.mp4" type="video/mp4">
-    Il tuo browser non supporta i video HTML5.
-  </video>
-  <div class="content">
+  <LoaderComponent v-if="store.loading.state" />
+  <div class="video-background  p-0  ">
+    <video autoplay muted loop id="myVideo">
+      <source src="/code-cascade.mp4" type="video/mp4">
+    </video>
+    <div class="content">
 
-    <HeaderComponent/>
-  <!-- <div class="container"> -->
-    <RouterView class=""/>
-  <!-- </div> -->
-  <FooterComponent/>
+      <HeaderComponent />
+      <div class="container">
+        <div class="row">
+          <RouterView class="overflow-y-auto" style="color: white; height: calc(100vh - 140px);" />
+        </div>
+      </div>
+      <FooterComponent />
+    </div>
   </div>
-</div>
-  
+
 </template>
 
 <style scoped>
@@ -51,7 +52,8 @@ export default {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 100vh; /* Altezza della finestra */
+  height: 100vh;
+  /* Altezza della finestra */
 }
 
 #myVideo {

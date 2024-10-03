@@ -1,6 +1,8 @@
 <template>
-    <div class="container mt-5 d-flex justify-content-center">
-        <img class="w-75" src="/work-in-progress.jpg" alt="">
+    <div class="container-fluid">
+        <div class="row mt-4 justify-content-center">
+            <img class="w-50" src="/work-in-progress.jpg" alt="">
+        </div>
     </div>
 </template>
 

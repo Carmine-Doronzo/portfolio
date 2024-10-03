@@ -1,16 +1,19 @@
 <template>
     <div class="container-fluid">
         <div class="row gy-2 gap-4 justify-content-center">
-            <ProjectCardComponent v-for="(projectItem) in elementsPaginate" :key="projectItem.id" :item="projectItem" class="col-12 col-md-6 col-lg-3 m-0 project-card" />
+            <ProjectCardComponent v-for="(projectItem) in elementsPaginate" :key="projectItem.id" :item="projectItem"
+                class="col-12 col-md-6 col-lg-3 m-0 my-5 project-card" />
+            <button @click="goToPage(prevPage)" :disabled="!prevPage">Pagina precedente</button>
+            <button @click="goToPage(nextPage)" :disabled="!nextPage">Pagina successiva</button>
         </div>
 
-        <ul class="pagination justify-content-center m-0">
+        <!-- <ul class="pagination justify-content-center m-0">
             <li class="page-item" v-for="page in totPage" :key="page">
                 <button class="page-link" @click="goToPage(page)">
                     {{ page }}
                 </button>
             </li>
-        </ul>
+        </ul> -->
     </div>
 </template>
 
@@ -45,16 +48,22 @@ export default {
         totPage() {
             return Math.ceil(this.store.data.projectsToView.length / this.perPage);
         },
+        prevPage() {
+            return this.currentPage > 1 ? this.currentPage - 1 : null;
+        },
+        nextPage() {
+            return this.currentPage < this.totPage ? this.currentPage + 1 : null;
+        },
     },
     mounted() {
         this.store.loading.on()
-        if(this.store.data.projectsToView.length > 20){
+        if (this.store.data.projectsToView.length > 20) {
             this.store.loading.off()
         }
 
     },
-    updated(){
-        if(this.store.data.projectsToView.length > 20){
+    updated() {
+        if (this.store.data.projectsToView.length > 20) {
             this.store.loading.off()
         }
     }
@@ -62,7 +71,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .page-link {
     cursor: pointer;
     background-color: #007bff;

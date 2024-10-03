@@ -1,20 +1,19 @@
-// components/BarChart.vue
 <template>
     <div class="chart-container">
-        <Bar :data="chartData" :options="chartOptions" />
+        <Pie :data="chartData" :options="chartOptions" />
     </div>
 </template>
 
 <script>
-import { Bar } from 'vue-chartjs';
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import { Pie } from 'vue-chartjs';
+import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
+ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
 export default {
-    name: 'BarChart',
+    name: 'PieChart',
     components: {
-        Bar
+        Pie
     },
     props: {
         dataTech: { type: Array },
@@ -54,15 +53,8 @@ export default {
                 ]
             },
             chartOptions: {
-                indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        max: 300000
-                    }
-                }
             }
         };
     }
