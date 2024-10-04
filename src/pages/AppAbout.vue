@@ -1,13 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="row mt-4">
-            <h1 class="text-center">Carmine - Full Stack Web Developer</h1>
-            <p class="text-center">&#128075; Ciao! Sono Carmine, un neo Full Stack Web Developer con una grande passione
-                per
-                l'apprendimento continuo e l'innovazione. Amo esplorare nuovi metodi, anche fuori dagli schemi, per
-                migliorare il flusso di idee in team e trovare soluzioni alternative ma efficaci per la risoluzione dei
-                bug.
-            </p>
+            
 
             <h2 class="mt-4">&#128736;&#65039; Esperienza Professionale</h2>
             <p>Nonostante il mio passato lavorativo fosse in un settore diverso, ho sempre desiderato intraprendere la
