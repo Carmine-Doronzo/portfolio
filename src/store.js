@@ -183,6 +183,7 @@ export const store = reactive({
     projects: [],
     projectsToView: [],
     projectsNone: [],
+    bestProjects:[],
     info: null,
 
     /*async/await è una sintassi che permette di scrivere codice asincrono in modo più leggibile e simile
@@ -305,7 +306,7 @@ export const store = reactive({
     }
   },
 
-  async status(projects, arrayGood, arrayBad) {
+  async status(projects, arrayGood, arrayBad, arrayBest) {
     const statusRequests = projects.map(async (project) => {
       try {
         const res = await store.octokit.request(`GET /repos/{owner}/{repo}/contents/status`, {

@@ -1,10 +1,10 @@
 <template>
     <div class="container-fluid ">
-        <div class="row ms-pad gy-2 gap-4 justify-content-center">
+        <ul class="row ms-pad gy-2 gap-4 justify-content-center">
             <ProjectCardComponent v-for="(projectItem) in elementsPaginate" :key="projectItem.id" :item="projectItem"
                 class="col-12 col-md-6 col-lg-3 m-0 my-5 project-card" />
 
-        </div>
+        </ul>
         <div class="d-flex justify-content-around my-4">
             <button :class="prevPage ?'matrix-button':'d-none'" @click="goToPage(prevPage)" :disabled="!prevPage">Pagina precedente</button>
             <button :class="nextPage ? 'matrix-button':'d-none'" @click="goToPage(nextPage)" :disabled="!nextPage">Pagina successiva</button>

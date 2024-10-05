@@ -2,35 +2,6 @@
     <div class="container-fluid">
         <h1 class="text-center d-block d-lg-none">Carmine - Full Stack Web Developer</h1>
 
-        <!-- <div class="card my-4">
-            <div class="tools">
-                <div class="circle">
-                    <span class="red box"></span>
-                </div>
-                <div class="circle">
-                    <span class="yellow box"></span>
-                </div>
-                <div class="circle">
-                    <span class="green box"></span>
-                </div>
-            </div>
-            <div class="card__content">
-                <div class="text-center terminal-output py-5">
-                    <p class="terminal-text" style="--delay: 0s;">
-                        👋 Ciao! Sono Carmine, un neo Full Stack Web Developer con una grande passione per
-                        l'apprendimento
-                        continuo e
-                    </p>
-                    <p class="terminal-text" style="--delay: 3.5s;">l'innovazione. Amo esplorare nuovi metodi, anche
-                        fuori dagli
-                        schemi, per migliorare il flusso di idee in team e</p>
-                    <p class="terminal-text" style="--delay: 7s;">trovare soluzioni alternative ma efficaci per la
-                        risoluzione
-                        dei bug.</p>
-                </div>
-            </div>
-        </div> -->
-
         <div class="container-ms my-4">
             <div class="terminal_toolbar">
                 <div class="butt">
@@ -49,33 +20,37 @@
                     <span class="terminal_location">~</span>
                     <span class="terminal_bling">$</span>
                     <div class=" terminal-output fs-6">
-                        <p class="terminal-text" style="--delay: 0s;">
+                        <p id="text1" class="terminal-text">
                             👋 Ciao! Sono Carmine, un neo Full Stack Web Developer con una grande passione per
-                            l'apprendimento
-                            continuo e
+                            l'apprendimento continuo e l'innovazione. Amo esplorare nuovi metodi, anche fuori dagli
+                            schemi, per migliorare il flusso di idee in team e trovare soluzioni alternative ma efficaci
+                            per la risoluzione dei bug.
                         </p>
-                        <p class="terminal-text" style="--delay: 3.5s;">l'innovazione. Amo esplorare nuovi metodi, anche
-                            fuori dagli
-                            schemi, per migliorare il flusso di idee in team e</p>
-                        <p class="terminal-text" style="--delay: 7s;">trovare soluzioni alternative ma efficaci per la
-                            risoluzione
-                            dei bug.</p>
+
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <div class="row mt-4 justify-content-center align-items-center">
-            <div v-for="number,i in 12" :key="number" class="col-3 d-flex justify-content-center matrix-animation">
-                <a :href="programmingLinks[i]"><img :src="`/icon/icon-${number}.png`" width="90" alt="" class="icon-hover"></a>
-            </div>
-        </div>
+        <ul class="row mt-4 justify-content-center align-items-center">
+            <li v-for="number, i in 12" :key="number" class="col-3 d-flex justify-content-center matrix-animation">
+                <a :href="programmingLinks[i]" target="_blank"><img :src="`/icon/icon-${number}.png`" width="90" alt=""
+                        class="icon-hover"></a>
+                </li>
+        </ul>
+        <ul class="row">
+           <ProjectCardComponent />
+        </ul>
     </div>
 </template>
 
 <script>
+import ProjectCardComponent from '../components/ProjectCardComponent.vue';
 export default {
+    components:{
+        ProjectCardComponent
+    },
     data() {
         return {
             programmingLinks: [
@@ -91,11 +66,45 @@ export default {
                 "https://www.javascript.com/", // JavaScript
                 "https://angular.io/", // Angular
                 "https://laravel.com/", // Laravel
-                
+
             ]
         };
+    }, mounted() {
+        this.typeText('text1', 0);
+
+    },
+    methods: {
+        // La funzione typeText prende due parametri: l'ID dell'elemento e il ritardo prima di iniziare l'animazione
+        typeText(id, delay) {
+            // Ottiene l'elemento HTML con l'ID specificato
+            const element = document.getElementById(id);
+            // Salva il contenuto testuale dell'elemento
+            const text = element.innerHTML;
+            // Svuota il contenuto dell'elemento per iniziare con un testo vuoto
+            element.innerHTML = '';
+            // Rende visibile l'elemento
+            element.style.visibility = 'visible';
+            // Inizializza un contatore per tracciare la posizione corrente nel testo
+            let i = 0;
+            // Imposta un timeout per ritardare l'inizio dell'animazione
+            setTimeout(() => {
+                // Imposta un intervallo per aggiungere una lettera alla volta al contenuto dell'elemento
+                const interval = setInterval(() => {
+                    // Controlla se ci sono ancora lettere da aggiungere
+                    if (i < text.length) {
+                        // Aggiunge la lettera corrente al contenuto dell'elemento
+                        element.innerHTML += text.charAt(i);
+                        // Incrementa il contatore per passare alla lettera successiva
+                        i++;
+                    } else {
+                        // Se tutte le lettere sono state aggiunte, cancella l'intervallo
+                        clearInterval(interval);
+                    }
+                }, 50); // Imposta la velocità dell'animazione (50 millisecondi per lettera)
+            }, delay); // Imposta il ritardo prima di iniziare l'animazione
+        }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -165,60 +174,23 @@ export default {
     --i: 12;
 }
 
-@keyframes typing {
-    from {
-        width: 0;
-        opacity: 1;
-    }
-
-    to {
-        width: 100%;
-        opacity: 1;
-    }
-}
-
-@keyframes blink-caret {
-
-    from,
-    to {
-        border-color: transparent;
-    }
-
-    50% {
-        border-color: white;
-    }
-
-}
-
 .terminal-output {
     font-family: 'Courier New', Courier, monospace;
-    white-space: wrap;
+    white-space: normal;
+    /* Permette al testo di andare a capo */
     overflow: hidden;
     border-right: .15em solid black;
 }
 
 .terminal-text {
-    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
     display: inline-block;
     width: 100%;
-    white-space: nowrap;
+    white-space: normal;
+    /* Permette al testo di andare a capo */
     overflow: hidden;
     border-right: .15em solid black;
-    animation-delay: var(--delay);
-    opacity: 0;
-    animation-fill-mode: forwards;
-}
-
-.terminal-text:nth-child(1) {
-    animation-delay: 0s;
-}
-
-.terminal-text:nth-child(2) {
-    animation-delay: 4s;
-}
-
-.terminal-text:nth-child(3) {
-    animation-delay: 8s;
+    visibility: hidden;
+    /* Nasconde il testo */
 }
 
 .icon-hover:hover {
@@ -226,52 +198,11 @@ export default {
 }
 
 
-// .card {
-//     width: 100%;
-//     height: 254px;
-//     margin: 0 auto;
-//     background-color: #011522;
-//     border-radius: 8px;
-//     z-index: 1;
-//     opacity: 0.7;
-//     color: white;
-// }
 
-// .tools {
-//     display: flex;
-//     align-items: center;
-//     padding: 9px;
-// }
-
-// .circle {
-//     padding: 0 4px;
-// }
-
-// .box {
-//     display: inline-block;
-//     align-items: center;
-//     width: 10px;
-//     height: 10px;
-//     padding: 1px;
-//     border-radius: 50%;
-// }
-
-// .red {
-//     background-color: #ff605c;
-// }
-
-
-// .yellow {
-//     background-color: #ffbd44;
-// }
-
-// .green {
-//     background-color: #00ca4e;
-// }
 
 .container-ms {
     width: 100%;
-    height: 250px;
+    max-height: 100%;
 }
 
 .terminal_toolbar {
