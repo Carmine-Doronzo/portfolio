@@ -202,7 +202,7 @@ export const store = reactive({
       });
       this.projects = res.data;
 
-      store.status(this.projects, this.projectsToView, this.projectsNone);
+      store.status(this.projects, this.projectsToView, this.projectsNone ,this.bestProjects);
 
       const projectRequests = this.projects.map(async (project) => {
         try {
@@ -323,7 +323,12 @@ export const store = reactive({
 
         if (status === 'finish' || status === 'work in progress') {
           arrayGood.push(project);
-        } else {
+        }else if(status === 'finish/best' || status === 'work in progress/best'){
+          arrayGood.push(project)
+          arrayBest.push(project)
+          
+        } 
+        else {
           arrayBad.push(project);
         }
       } catch (error) {

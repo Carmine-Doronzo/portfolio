@@ -38,7 +38,7 @@ export default {
   <li class="card col-12 col-md-6 col-lg-3 mb-4">
     <div class="position-relative">
       <img :src="item.image ? item.image : 'not-avaible.jpg'" class="card-img-top" height="200" alt="...">
-      <WorkInProgressComponent v-if="item.status === 'work in progress'" class="position-absolute end-0 top-0 icon-container z-3"/>
+      <WorkInProgressComponent v-if="item.status === 'work in progress' || item.status === 'work in progress/best' " class="position-absolute end-0 top-0 icon-container z-3"/>
       <!-- <img v-if="item.status === 'work in progress'" src="/work-in-progress.jpg" 
         class="position-absolute end-0 top-0 icon-container" width="100" alt="...">-->
     </div>

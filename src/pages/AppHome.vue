@@ -39,20 +39,23 @@
                         class="icon-hover"></a>
                 </li>
         </ul>
-        <ul class="row">
-           <ProjectCardComponent />
+        <ul class="row gy-2 gap-4 justify-content-center">
+           <ProjectCardComponent v-for="(projectItem) in store.data.bestProjects" :key="projectItem.id" :item="projectItem"
+                class="col-12 col-md-6 col-lg-3 m-0 my-5" />
         </ul>
     </div>
 </template>
 
 <script>
 import ProjectCardComponent from '../components/ProjectCardComponent.vue';
+import { store } from '../store';
 export default {
     components:{
         ProjectCardComponent
     },
     data() {
         return {
+            store,
             programmingLinks: [
                 "https://www.w3schools.com/html/", // HTML
                 "https://www.mysql.com/", // MySQL
