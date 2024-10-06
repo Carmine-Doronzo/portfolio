@@ -9,14 +9,14 @@
                     <button class="btn"></button>
                     <button class="btn"></button>
                 </div>
-                <p class="user pt-3">carmine@admin: ~</p>
+                <p class="user pt-3">carmine/admin: ~</p>
                 <div class="add_tab">
                     +
                 </div>
             </div>
             <div class="terminal_body">
                 <div class="terminal_promt">
-                    <span class="terminal_user">carmine@admin:</span>
+                    <span class="terminal_user">carmine/admin:</span>
                     <span class="terminal_location">~</span>
                     <span class="terminal_bling">$</span>
                     <div class=" terminal-output fs-6">
@@ -33,15 +33,15 @@
             </div>
         </div>
 
-        <ul class="row mt-4 justify-content-center align-items-center">
-            <li v-for="number, i in 12" :key="number" class="col-3 d-flex justify-content-center matrix-animation">
+        <ul class="row mt-4 justify-content-center align-items-center p-0">
+            <li v-for="number, i in 12" :key="number" class="col-3 d-flex justify-content-center matrix-animation ">
                 <a :href="programmingLinks[i]" target="_blank"><img :src="`/icon/icon-${number}.png`" width="90" alt=""
                         class="icon-hover"></a>
                 </li>
         </ul>
-        <ul class="row gy-2 gap-4 justify-content-center">
+        <ul class="row ms-pad gy-2 gap-4 justify-content-center">
            <ProjectCardComponent v-for="(projectItem) in store.data.bestProjects" :key="projectItem.id" :item="projectItem"
-                class="col-12 col-md-6 col-lg-3 m-0 my-5" />
+                class="col-12 col-md-6 col-lg-3 m-0 my-5 project-card" />
         </ul>
     </div>
 </template>
@@ -111,6 +111,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.project-card {
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
 @keyframes matrix-fall {
     0% {
         opacity: 0;
@@ -332,6 +339,19 @@ export default {
 
     100% {
         background: #ffffff;
+    }
+}
+
+.ms-pad{
+    padding: 0 15px;
+}
+
+@media (min-width: 768px) {
+    .project-card:hover {
+        transform: scale(1.1);
+    }
+    .ms-pad{
+        padding: 0;
     }
 }
 </style>

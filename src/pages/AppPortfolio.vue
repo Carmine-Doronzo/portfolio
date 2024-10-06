@@ -73,21 +73,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-link {
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8 16px;
-    margin-right: 10px;
-    border-radius: 0.25rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
+// .page-link {
+//     cursor: pointer;
+//     background-color: #007bff;
+//     color: white;
+//     border: none;
+//     padding: 8 16px;
+//     margin-right: 10px;
+//     border-radius: 0.25rem;
+//     transition: background-color 0.3s ease, transform 0.3s ease;
+// }
 
-.page-link:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
+// .page-link:hover {
+//     background-color: #0056b3;
+//     transform: scale(1.05);
+// }
 
 .project-card {
     transition: transform 0.3s ease;

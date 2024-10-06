@@ -83,7 +83,7 @@ export default {
   bottom: -122px;
   right: 10px;
   background-color: transparent;
-  z-index: 1000;
+  z-index: 999;
 }
 .badge img {
   width: 50px;

@@ -24,10 +24,10 @@
                             <RouterLink class="nav-link" :to="{ name: 'portfolio' }" @click="state = false"><i class="fas fa-briefcase"></i>
                                 Portfolio</RouterLink>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <RouterLink class="nav-link" :to="{ name: 'contact' }" @click="state = false"><i class="fas fa-envelope"></i>
                                 Contact</RouterLink>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
