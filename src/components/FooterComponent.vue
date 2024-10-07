@@ -3,12 +3,24 @@
 
         <footer>
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 d-flex flex-column justify-content-center align-items-center ">
+                <div class="row justify-content-around pt-2">
+                    <div class="col-6 d-flex flex-column justify-content-center align-items-center ">
                         <h3>Seguimi su:</h3>
-                        <ul class="d-flex flex-grow-1 p-0">
-                            <li><i class="fa-brands fa-github"></i></li>
-                            <li><i class="fa-brands fa-linkedin"></i></li>
+                        <ul class="d-flex flex-grow-1 p-0 list-unstyled">
+                            <li><a href="https://github.com/Carmine-Doronzo" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/carmine-d-oronzo-193119315" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 d-flex justify-content-center">
+                        <h3>Contatti:</h3>
+                        <ul class="p-0 list-unstyled">
+                            <li>
+                                <a class="text-decoration-none d-flex justify-content-center align-items-center " style="color: currentColor; font-family: 'Courier New', Courier, monospace;" href="mailTo:carmine.doronzo92@gmail.com"><i class="fs-2 fa-solid fa-at"></i>carmine.doronzo92@gmail.com</a>
+                                
+                            </li>
+                            <li class="pt-2">
+                                <h4><i class="fs-2 fa-solid fa-phone"></i>3494600227</h4>
+                            </li>
                         </ul>
                     </div>
 

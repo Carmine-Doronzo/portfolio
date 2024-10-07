@@ -27,7 +27,7 @@ export default {
       <h5 class="card-title">{{ item.name.replaceAll('-', ' ') }}</h5>
       <p>id: {{ item.id }}</p>
       <!-- <p class="card-text">Status: {{ item.status }}</p> -->
-      <RouterLink :to="{ name: 'show', params: { slug: item.id } }" class="matrix-button">More ...</RouterLink>
+      <RouterLink :to="{ name: 'show', params: { slug: item.id } }" class="matrix-button  text-decoration-none">More ...</RouterLink>
     </div>
   </li>
 </template>

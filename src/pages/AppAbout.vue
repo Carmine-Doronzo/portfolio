@@ -1,7 +1,11 @@
 <template>
     <div class="container-fluid">
         <div class="row mt-4">
-
+            <div class="d-flex justify-content-evenly">
+            <button @click="store.data.cv =  true" class="matrix-button  text-decoration-none"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Visualizza CV in italiano</button>
+            <button @click="store.data.cvEn =  true" class="matrix-button  text-decoration-none"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Visualizza CV in inglese</button>
+        </div>
+        
             <div class="container-ms my-4">
                 <div class="terminal_toolbar">
                     <div class="butt">
@@ -61,15 +65,15 @@
                         <div class=" terminal-output fs-6">
                             <p id="text2" class="terminal-text ">
 
-                                &#129513;PROBLEM SOLVING: Capacità di
+                                &#129513; PROBLEM SOLVING: Capacità di
                                 analizzare e
                                 risolvere
                                 malfunzionamenti in modo efficace.<br>
-                                &#129309;LAVORO DI SQUADRA: Esperienza
+                                &#129309; LAVORO DI SQUADRA: Esperienza
                                 nel collaborare
                                 con
                                 team per raggiungere obiettivi comuni.<br>
-                                &#128221;GESTIONE DELLE TASK: Abilità
+                                &#128221; GESTIONE DELLE TASK: Abilità
                                 nella gestione e
                                 organizzazione delle attività quotidiane.
 
@@ -126,9 +130,13 @@
 </template>
 
 <script>
+import { store } from '../store';
+
 export default {
     data() {
-        return {}
+        return {
+            store
+        }
     },
     mounted() {
         this.typeText('text1', 0);
@@ -137,64 +145,87 @@ export default {
 
     },
     methods: {
-         typeText(id, delay) {
-    // Ottiene l'elemento HTML con l'ID specificato
-    const element = document.getElementById(id);
-    // Salva il contenuto testuale dell'elemento
-    const text = element.innerHTML;
-    // Svuota il contenuto dell'elemento per iniziare con un testo vuoto
-    element.innerHTML = '';
-    // Rende visibile l'elemento
-    element.style.visibility = 'visible';
+        typeText(id, delay) {
+            // Ottiene l'elemento HTML con l'ID specificato
+            const element = document.getElementById(id);
+            // Salva il contenuto testuale dell'elemento
+            const text = element.innerHTML;
+            // Svuota il contenuto dell'elemento per iniziare con un testo vuoto
+            element.innerHTML = '';
+            // Rende visibile l'elemento
+            element.style.visibility = 'visible';
 
-    // Inizializza un contatore per tracciare la posizione corrente nel testo
-    let i = 0;
-    // Variabile per tracciare se siamo all'interno di un tag HTML
-    let isTag = false;
-    // Variabile per accumulare il contenuto del tag HTML
-    let tagContent = '';
+            // Inizializza un contatore per tracciare la posizione corrente nel testo
+            let i = 0;
+            // Variabile per tracciare se siamo all'interno di un tag HTML
+            let isTag = false;
+            // Variabile per accumulare il contenuto del tag HTML
+            let tagContent = '';
 
-    // Imposta un timeout per ritardare l'inizio dell'animazione
-    setTimeout(() => {
-        // Imposta un intervallo per aggiungere un carattere alla volta al contenuto dell'elemento
-        const interval = setInterval(() => {
-            // Controlla se ci sono ancora caratteri da aggiungere
-            if (i < text.length) {
-                const char = text.charAt(i);
+            // Imposta un timeout per ritardare l'inizio dell'animazione
+            setTimeout(() => {
+                // Imposta un intervallo per aggiungere un carattere alla volta al contenuto dell'elemento
+                const interval = setInterval(() => {
+                    // Controlla se ci sono ancora caratteri da aggiungere
+                    if (i < text.length) {
+                        const char = text.charAt(i);
 
-                if (char === '<') {
-                    isTag = true;
-                    tagContent += char;
-                } else if (char === '>') {
-                    isTag = false;
-                    tagContent += char;
-                    element.innerHTML += tagContent;
-                    tagContent = '';
-                } else if (isTag) {
-                    tagContent += char;
-                } else {
-                    element.innerHTML += char;
-                }
+                        if (char === '<') {
+                            isTag = true;
+                            tagContent += char;
+                        } else if (char === '>') {
+                            isTag = false;
+                            tagContent += char;
+                            element.innerHTML += tagContent;
+                            tagContent = '';
+                        } else if (isTag) {
+                            tagContent += char;
+                        } else {
+                            element.innerHTML += char;
+                        }
 
-                // Incrementa il contatore per passare al carattere successivo
-                i++;
-            } else {
-                // Se tutti i caratteri sono stati aggiunti, cancella l'intervallo
-                clearInterval(interval);
-            }
-        }, 50); // Imposta la velocità dell'animazione (50 millisecondi per carattere)
-    }, delay); // Imposta il ritardo prima di iniziare l'animazione
-}
+                        // Incrementa il contatore per passare al carattere successivo
+                        i++;
+                    } else {
+                        // Se tutti i caratteri sono stati aggiunti, cancella l'intervallo
+                        clearInterval(interval);
+                    }
+                }, 50); // Imposta la velocità dell'animazione (50 millisecondi per carattere)
+            }, delay); // Imposta il ritardo prima di iniziare l'animazione
+        },
+        
 
 
 
 
+    },computed:{
+        timeoutDownload(){
+            setTimeout(() => {
+                return true
+            }, 3000);
+        }
     }
 }
 
 </script>
 
 <style lang="scss" scoped>
+.matrix-button {
+    background-color: black;
+    color: lime;
+    border: 2px solid lime;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    width: fit-content;
+}
+
+.matrix-button:hover {
+    background-color: lime;
+    color: black;
+}
+
 .terminal-output {
     font-family: 'Courier New', Courier, monospace;
     white-space: normal;
@@ -204,6 +235,7 @@ export default {
 }
 
 .terminal-text {
+    font-family: 'Courier New', Courier, monospace;
     display: inline-block;
     width: 100%;
     white-space: normal;

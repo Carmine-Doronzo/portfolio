@@ -22,7 +22,7 @@
                         </li>
                         <li class="nav-item">
                             <RouterLink class="nav-link" :to="{ name: 'portfolio' }" @click="state = false"><i class="fas fa-briefcase"></i>
-                                Portfolio</RouterLink>
+                                Progetti</RouterLink>
                         </li>
                         <!-- <li class="nav-item">
                             <RouterLink class="nav-link" :to="{ name: 'contact' }" @click="state = false"><i class="fas fa-envelope"></i>
@@ -53,7 +53,7 @@ export default {
 header {
     background-color: black;
     font-family: 'Matrix', sans-serif;
-    color:green;
+    color:lime !important;
     min-width: 100%;
     
 }
@@ -70,7 +70,7 @@ header {
 .nav-link {
     display: flex;
     align-items: center;
-    color: rgb(0, 128, 0);
+    color: lime;
 }
 
 .nav-link i {
@@ -79,11 +79,11 @@ header {
 }
 
 .navbar-toggler {
-    border-color: #008000;
+    border-color: lime;
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 128, 0, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 255, 0, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 
 }
 @media (max-width: 992px) {

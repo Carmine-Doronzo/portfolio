@@ -32,16 +32,18 @@
                 </div>
             </div>
         </div>
-
+        <h2 class="text-center mt-5">Competenze acquisite:</h2>
         <ul class="row mt-4 justify-content-center align-items-center p-0">
-            <li v-for="number, i in 12" :key="number" class="col-3 d-flex justify-content-center matrix-animation ">
+            <li v-for="number, i in 13" :key="number"
+                class="col-6 col-lg-3 d-flex justify-content-center matrix-animation ">
                 <a :href="programmingLinks[i]" target="_blank"><img :src="`/icon/icon-${number}.png`" width="90" alt=""
                         class="icon-hover"></a>
-                </li>
+            </li>
         </ul>
+        <h2 class="text-center mt-5">Progetti migliori:</h2>
         <ul class="row ms-pad gy-2 gap-4 justify-content-center">
-           <ProjectCardComponent v-for="(projectItem) in store.data.bestProjects" :key="projectItem.id" :item="projectItem"
-                class="col-12 col-md-6 col-lg-3 m-0 my-5 project-card" />
+            <ProjectCardComponent v-for="(projectItem) in store.data.bestProjects" :key="projectItem.id"
+                :item="projectItem" class="col-12 col-md-6 col-lg-3 m-0 my-5 project-card" />
         </ul>
     </div>
 </template>
@@ -50,7 +52,7 @@
 import ProjectCardComponent from '../components/ProjectCardComponent.vue';
 import { store } from '../store';
 export default {
-    components:{
+    components: {
         ProjectCardComponent
     },
     data() {
@@ -69,12 +71,26 @@ export default {
                 "https://www.javascript.com/", // JavaScript
                 "https://angular.io/", // Angular
                 "https://laravel.com/", // Laravel
+                "https://git-scm.com/" // Git
 
             ]
         };
     }, mounted() {
+
+        
+        this.store.loading.on()
+        if (this.store.data.projectsToView.length > 20) {
+            this.store.loading.off()
+            //this.typeText('text1', 0);
+        }
         this.typeText('text1', 0);
 
+    },
+    updated() {
+        if (this.store.data.projectsToView.length > 20) {
+            this.store.loading.off()
+           
+        }
     },
     methods: {
         // La funzione typeText prende due parametri: l'ID dell'elemento e il ritardo prima di iniziare l'animazione
@@ -111,6 +127,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+    color: #92e5a1;
+}
+
 .project-card {
     transition: transform 0.3s ease;
 }
@@ -118,6 +138,7 @@ export default {
 .project-card:hover {
     transform: scale(1.05);
 }
+
 @keyframes matrix-fall {
     0% {
         opacity: 0;
@@ -132,57 +153,10 @@ export default {
 
 .matrix-animation {
     animation: matrix-fall 1s ease-in-out forwards;
-    animation-delay: calc(var(--i) * 0.1s);
+    animation-delay: 0.1s;
     opacity: 0;
 }
 
-.matrix-animation:nth-child(1) {
-    --i: 1;
-}
-
-.matrix-animation:nth-child(2) {
-    --i: 2;
-}
-
-.matrix-animation:nth-child(3) {
-    --i: 3;
-}
-
-.matrix-animation:nth-child(4) {
-    --i: 4;
-}
-
-.matrix-animation:nth-child(5) {
-    --i: 5;
-}
-
-.matrix-animation:nth-child(6) {
-    --i: 6;
-}
-
-.matrix-animation:nth-child(7) {
-    --i: 7;
-}
-
-.matrix-animation:nth-child(8) {
-    --i: 8;
-}
-
-.matrix-animation:nth-child(9) {
-    --i: 9;
-}
-
-.matrix-animation:nth-child(10) {
-    --i: 10;
-}
-
-.matrix-animation:nth-child(11) {
-    --i: 11;
-}
-
-.matrix-animation:nth-child(12) {
-    --i: 12;
-}
 
 .terminal-output {
     font-family: 'Courier New', Courier, monospace;
@@ -193,6 +167,7 @@ export default {
 }
 
 .terminal-text {
+    font-family: 'Courier New', Courier, monospace;
     display: inline-block;
     width: 100%;
     white-space: normal;
@@ -200,11 +175,10 @@ export default {
     overflow: hidden;
     border-right: .15em solid black;
     visibility: hidden;
-    /* Nasconde il testo */
 }
 
 .icon-hover:hover {
-    filter: drop-shadow(0 0 20px lime);
+    filter: drop-shadow(0 0 20px #00ff00);
 }
 
 
@@ -342,7 +316,7 @@ export default {
     }
 }
 
-.ms-pad{
+.ms-pad {
     padding: 0 15px;
 }
 
@@ -350,7 +324,8 @@ export default {
     .project-card:hover {
         transform: scale(1.1);
     }
-    .ms-pad{
+
+    .ms-pad {
         padding: 0;
     }
 }

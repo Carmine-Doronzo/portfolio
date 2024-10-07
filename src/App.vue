@@ -38,16 +38,65 @@ export default {
       <HeaderComponent />
       <div class="container">
         <div class="row">
-          <RouterView class="overflow-y-auto" style="color: white; height: calc(100vh - 199.66px);" />
+          <RouterView class="overflow-y-auto" style="color: white; height: calc(100vh - 215px);" />
         </div>
       </div>
       <FooterComponent />
     </div>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+      <div class="modal-content card">
+        
+          
+          <button type="button" class="btn-close card-text" data-bs-dismiss="modal" aria-label="Close" @click="store.data.cvEn = false ; store.data.cv = false ; store.data.isImage = false">&Cross;</button>
+        
+        <div class="modal-body">
+          <img v-if="store.data.info && store.data.isImage === true" class="d-block w-100"
+            :src="store.data.info.image[store.data.imgIndex]" alt="">
+
+          <embed class="w-100" v-else-if="store.data.cvEn === true" src="/cv-carmine-doronzo(EN).pdf"
+            type="application/pdf" height="700">
+
+
+          <embed class="w-100" v-else-if="store.data.cv === true" src="/cv-carmine-doronzo.pdf"
+            type="application/pdf" height="700">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
 </template>
 
 <style scoped>
+.card {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #0f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px #0f0;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #0f0;
+}
+
+.card-title,
+.card-text,
+.btn {
+  color: #0f0;
+}
+
+.card-body {
+  font-family: 'Matrix', Courier, monospace;
+}
+
 .video-background {
   position: relative;
   overflow: hidden;
