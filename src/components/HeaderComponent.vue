@@ -11,7 +11,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div v-if="state === true" @click="state = true" class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto d-flex flex-column justify-content-center align-items-center" >
+                    <ul class="navbar-nav ms-auto d-flex flex-column flex-lg-row justify-content-center align-items-center" >
                         <li class="nav-item">
                             <RouterLink class="nav-link" :to="{ name: 'home' }" @click="state = false" ><i class="fas fa-home"></i> Home
                             </RouterLink>
