@@ -39,6 +39,7 @@ export default {
         goToPage(page) {
             if (page) {
                 this.currentPage = page;
+                window.scrollTo({ top: 0, behavior: "smooth" });
             }
         },
     },

@@ -17,21 +17,21 @@
           </div>
 
         </div>
-        <button v-if="store.data.info.image.length > 1" class="carousel-control-prev" type="button"
-          data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <button v-if="store.data.info.image && store.data.info.image.length > 1" class="carousel-control-prev"
+          type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button v-if="store.data.info.image.length > 1" class="carousel-control-next" type="button"
-          data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <button v-if="store.data.info.image && store.data.info.image.length > 1" class="carousel-control-next"
+          type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
 
       <button class="matrix-button mt-4" @click="showTecnologies()">Mostra Linguaggi utilizzati</button>
-      <BarChart v-if="showTeck" :dataTech="store.data.info.only_languages"
-        :countTech="store.data.info.count_languages" class="my-5" />
+      <BarChart v-if="showTeck" :dataTech="store.data.info.only_languages" :countTech="store.data.info.count_languages"
+        class="my-5" />
       <h4> Contributors : <span v-for="collaborator in store.data.info.contributors"><a
             :href="collaborator.html_url"><img width="100" height="100" style="border-radius: 50%;"
               :src="collaborator.avatar_url" alt=""></a></span></h4>
@@ -70,8 +70,9 @@ export default {
     },
     controlRoute() {
       const project = this.store.data.projectsToView.find(project => this.$route.params.slug === project.id.toString());
+      console.log(project)
       if (project) {
-        if (this.$route.path === `/portfolio/${project.id}`) {
+        if (this.$route.params.slug === project.id.toString()) {
           if (this.store.data.projects.length > 0) {
 
             this.store.data.getSingleProject(this.$route.params.slug);
@@ -87,17 +88,34 @@ export default {
 
   },
   watch: {
+
     'store.data.projects'(newValue, oldValue) {
 
       if (newValue !== oldValue) {
         if (newValue.length > 0) {
           this.store.data.getSingleProject(this.$route.params.slug);
-          
+
 
         }
 
       }
+
+
     },
+
+    'store.data.info'(newValue, oldValue) {
+
+      if (newValue && this.store.data.projectsToView?.length) {
+        const projectsIds = this.store.data.projectsToView.map(project => project.id);
+
+        if (!projectsIds.includes(newValue.id)) {
+          this.store.loading.off();
+          console.log('Project not found, redirecting to not-found');
+          this.$router.push({ name: 'not-found' });
+        }
+      }
+
+    }
 
   },
 
@@ -110,9 +128,9 @@ export default {
     if (this.store.data.projectsToView.length != 0) {
       this.controlRoute()
     } else {
-      async ()=>{
+      async () => {
         await this.store.data.fetchData()
-       this.controlRoute()
+        this.controlRoute()
       }
     }
 

@@ -25,7 +25,7 @@
 
                             </li>
                             <li class="pt-2 ">
-                                <h4 class=" d-flex justify-content-center align-items-center"><i
+                                <h4 @click="sendMessage()" class=" d-flex justify-content-center align-items-center"><i
                                         class="fs-2 fa-solid fa-phone"></i><span class="d-none d-lg-inline">3494600227</span></h4>
                             </li>
                         </ul>
@@ -40,8 +40,14 @@
 
 <script>
 export default {
-
+methods:{
+    sendMessage(){
+        window.location.href = 'whatsapp://send?phone=+393494600227'
+        console.log(window.location)
+    }
 }
+}
+
 </script>
 
 <style lang="scss" scoped>

@@ -20,7 +20,8 @@ export default {
       <div class="badge"  v-if="item.status === 'work in progress/best' || item.status === 'finish/best' ">
         <img src="/best-icon.png" alt="Best Icon" />
       </div>
-      <img :src="item.image ? item.image : 'not-avaible.jpg'" class="card-img-top" height="200" alt="...">
+      
+      <img :src="item.image && item.image.length !== 0 ? item.image[0] : 'not-avaible.jpg'" class="card-img-top" height="200" alt="...">
       <WorkInProgressComponent v-if="item.status === 'work in progress' || item.status === 'work in progress/best' " class="position-absolute end-0 top-0 icon-container z-3"/>
     </div>
     <div class="card-body">

@@ -18,9 +18,31 @@ export default {
   methods: {
 
   },
+  // watch:{
+  //   '$route.params.slug'(newValue){
+  //     if(newValue){
+  //     const project = this.store.data.projectsToView.find(project => newValue === project.id.toString());
+  //     console.log(project)
+  //     if (project) {
+  //       if (newValue === project.id.toString()) {
+  //         if (this.store.data.projects.length > 0) {
+
+  //           this.store.data.getSingleProject(newValue);
+  //           console.log(this.store.data.info)
+  //         }
+  //       }
+  //     } else {
+  //       this.store.loading.off()
+  //       console.log('Project not found, redirecting to not-found');
+  //       this.$router.push({ name: 'not-found' });
+  //     }
+  //   }
+  //   }
+  // },
   mounted() {
 
     this.store.data.fetchData()
+    
 
   }
 }
