@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid ">
+    <div ref="scrolling" class="container-fluid ">
         <ul class="row ms-pad gy-2 gap-4 justify-content-center">
             <ProjectCardComponent v-for="(projectItem) in elementsPaginate" :key="projectItem.id" :item="projectItem"
                 class="col-12 col-md-6 col-lg-3 m-0 my-5 project-card" />
@@ -39,7 +39,7 @@ export default {
         goToPage(page) {
             if (page) {
                 this.currentPage = page;
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                this.$refs.scrolling.scrollTo({ top: 0, behavior: "smooth" });
             }
         },
     },
@@ -52,9 +52,11 @@ export default {
             return Math.ceil(this.store.data.projectsToView.length / this.perPage);
         },
         prevPage() {
+           
             return this.currentPage > 1 ? this.currentPage - 1 : null;
         },
         nextPage() {
+            
             return this.currentPage < this.totPage ? this.currentPage + 1 : null;
         },
     },
@@ -63,6 +65,7 @@ export default {
         if (this.store.data.projectsToView.length > 20) {
             this.store.loading.off()
         }
+
 
     },
     updated() {

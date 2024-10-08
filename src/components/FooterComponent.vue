@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <footer>
             <div class="container-fluid">
                 <div class="row justify-content-around pt-2">
@@ -34,7 +33,6 @@
                 </div>
             </div>
         </footer>
-
     </div>
 </template>
 
