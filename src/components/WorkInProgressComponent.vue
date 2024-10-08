@@ -2,22 +2,26 @@
     <div class="box">
         <div class="button mx-4 ms-margin-md-auto mx-md-auto py-5">Work in Progress</div>
         <div class="matrix">
+
             <span style="--i: 6" class="code-line">
                 <p class="code">z</p>
                 <p class="code">6</p>
                 <p class="code">0</p>
                 <p class="code">z</p>
             </span>
+            
             <span style="--i: 8" class="code-line">
                 <p class="code">6</p>
                 <p class="code">9</p>
                 <p class="code">p</p>
             </span>
+            
             <span style="--i: 5" class="code-line">
                 <p class="code">u</p>
                 <p class="code">3</p>
                 <p class="code">g</p>
             </span>
+            
             <span style="--i: 12" class="code-line">
                 <p class="code">a</p>
                 <p class="code">t</p>
@@ -28,17 +32,20 @@
                 <p class="code">0</p>
                 <p class="code">k</p>
             </span>
+            
             <span style="--i: 9" class="code-line">
                 <p class="code">6</p>
                 <p class="code">3</p>
                 <p class="code">0</p>
             </span>
+            
             <span style="--i: 6" class="code-line">
                 <p class="code">7</p>
                 <p class="code">s</p>
                 <p class="code">b</p>
                 <p class="code">q</p>
             </span>
+            
             <span style="--i: 8" class="code-line">
                 <p class="code">m</p>
                 <p class="code">2</p>
@@ -47,6 +54,7 @@
                 <p class="code">l</p>
                 <p class="code">1</p>
             </span>
+            
             <span style="--i: 12" class="code-line">
                 <p class="code">9</p>
                 <p class="code">1</p>
@@ -58,6 +66,7 @@
                 <p class="code">h</p>
                 <p class="code">0</p>
             </span>
+            
             <span style="--i: 16" class="code-line">
                 <p class="code">a</p>
                 <p class="code">b</p>
@@ -65,6 +74,7 @@
                 <p class="code">d</p>
                 <p class="code">e</p>
             </span>
+            
             <span style="--i: 9" class="code-line">
                 <p class="code">f</p>
                 <p class="code">g</p>
@@ -72,12 +82,14 @@
                 <p class="code">i</p>
                 <p class="code">j</p>
             </span>
+            
             <span style="--i: 6" class="code-line">
                 <p class="code">k</p>
                 <p class="code">l</p>
                 <p class="code">m</p>
                 <p class="code">n</p>
             </span>
+            
             <span style="--i: 19" class="code-line">
                 <p class="code">u</p>
                 <p class="code">v</p>
@@ -86,6 +98,7 @@
                 <p class="code">2</p>
                 <p class="code">3</p>
             </span>
+            
             <span style="--i: 7" class="code-line">
                 <p class="code">p</p>
                 <p class="code">q</p>
@@ -93,6 +106,7 @@
                 <p class="code">s</p>
                 <p class="code">t</p>
             </span>
+            
             <span style="--i: 12" class="code-line">
                 <p class="code">1</p>
                 <p class="code">2</p>
@@ -101,6 +115,7 @@
                 <p class="code">5</p>
                 <p class="code">h</p>
             </span>
+            
             <span style="--i: 9" class="code-line">
                 <p class="code">6</p>
                 <p class="code">7</p>
@@ -109,6 +124,7 @@
                 <p class="code">6</p>
                 <p class="code">1</p>
             </span>
+            
             <span style="--i: 17" class="code-line">
                 <p class="code">j</p>
                 <p class="code">f</p>
@@ -117,6 +133,7 @@
                 <p class="code">6</p>
                 <p class="code">0</p>
             </span>
+            
             <span style="--i: 10" class="code-line">
                 <p class="code">0</p>
                 <p class="code">k</p>
@@ -125,7 +142,9 @@
                 <p class="code">6</p>
                 <p class="code">%</p>
             </span>
+        
         </div>
+    
     </div>
 </template>
 
@@ -136,7 +155,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* From Uiverse.io by tarantino421 */
 .box {
     --clr-shadow__border: #A8DF8E;
     --clr-text: #F6F4EB;

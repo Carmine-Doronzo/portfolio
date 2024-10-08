@@ -1,54 +1,3 @@
-<script>
-import HeaderComponent from './components/HeaderComponent.vue'
-import FooterComponent from './components/FooterComponent.vue';
-import { store } from './store'
-import LoaderComponent from './components/LoaderComponent.vue';
-export default {
-  components: {
-    HeaderComponent,
-    FooterComponent,
-    LoaderComponent
-  },
-  data() {
-    return {
-      store
-
-    }
-  },
-  methods: {
-
-  },
-  // watch:{
-  //   '$route.params.slug'(newValue){
-  //     if(newValue){
-  //     const project = this.store.data.projectsToView.find(project => newValue === project.id.toString());
-  //     console.log(project)
-  //     if (project) {
-  //       if (newValue === project.id.toString()) {
-  //         if (this.store.data.projects.length > 0) {
-
-  //           this.store.data.getSingleProject(newValue);
-  //           console.log(this.store.data.info)
-  //         }
-  //       }
-  //     } else {
-  //       this.store.loading.off()
-  //       console.log('Project not found, redirecting to not-found');
-  //       this.$router.push({ name: 'not-found' });
-  //     }
-  //   }
-  //   }
-  // },
-  mounted() {
-
-    this.store.data.fetchData()
-    
-
-  }
-}
-
-</script>
-
 <template>
   <LoaderComponent v-if="store.loading.state" />
   <div class="video-background  p-0  ">
@@ -94,6 +43,32 @@ export default {
 
 </template>
 
+<script>
+
+import HeaderComponent from './components/HeaderComponent.vue'
+import FooterComponent from './components/FooterComponent.vue';
+import { store } from './store'
+import LoaderComponent from './components/LoaderComponent.vue';
+
+export default {
+  components: {
+    HeaderComponent,
+    FooterComponent,
+    LoaderComponent
+  },
+  data() {
+    return {
+      store
+    }
+  },
+  
+  mounted() {
+    this.store.data.fetchData()
+  }
+}
+
+</script>
+
 <style scoped>
 .card {
   background-color: rgba(0, 0, 0, 0.8);
@@ -124,7 +99,6 @@ export default {
   overflow: hidden;
   width: 100%;
   height: 100vh;
-  /* Altezza della finestra */
 }
 
 #myVideo {

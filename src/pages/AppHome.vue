@@ -9,17 +9,21 @@
                     <button class="btn"></button>
                     <button class="btn"></button>
                 </div>
+                
                 <p class="user pt-3">carmine/admin: ~</p>
+                
                 <div class="add_tab">
                     +
                 </div>
             </div>
+            
             <div class="terminal_body">
                 <div class="terminal_promt">
                     <span class="terminal_user">carmine/admin:</span>
                     <span class="terminal_location">~</span>
                     <span class="terminal_bling">$</span>
                     <div class=" terminal-output fs-6">
+                   
                         <p id="text1" class="terminal-text">
                             👋 Ciao! Sono Carmine, un neo Full Stack Web Developer con una grande passione per
                             l'apprendimento continuo e l'innovazione. Amo esplorare nuovi metodi, anche fuori dagli
@@ -32,7 +36,9 @@
                 </div>
             </div>
         </div>
+        
         <h2 class="text-center mt-5">Competenze acquisite:</h2>
+        
         <ul class="row mt-4 justify-content-center align-items-center p-0">
             <li v-for="number, i in 13" :key="number"
                 class="col-6 col-lg-3 d-flex justify-content-center matrix-animation ">
@@ -40,11 +46,14 @@
                         class="icon-hover"></a>
             </li>
         </ul>
+        
         <h2 class="text-center mt-5">Progetti migliori:</h2>
+        
         <ul class="row ms-pad gy-2 gap-4 justify-content-center">
             <ProjectCardComponent v-for="(projectItem) in store.data.bestProjects" :key="projectItem.id"
                 :item="projectItem" class="col-12 col-md-6 col-lg-3 m-0 my-5 project-card" />
         </ul>
+    
     </div>
 </template>
 
@@ -77,20 +86,22 @@ export default {
         };
     }, mounted() {
 
-        
         this.store.loading.on()
+        
         if (this.store.data.projectsToView.length > 20) {
             this.store.loading.off()
-            //this.typeText('text1', 0);
         }
+        
         this.typeText('text1', 0);
 
     },
     updated() {
+        
         if (this.store.data.projectsToView.length > 20) {
             this.store.loading.off()
-           
+
         }
+    
     },
     methods: {
         // La funzione typeText prende due parametri: l'ID dell'elemento e il ritardo prima di iniziare l'animazione
@@ -180,9 +191,6 @@ export default {
 .icon-hover:hover {
     filter: drop-shadow(0 0 20px #00ff00);
 }
-
-
-
 
 .container-ms {
     width: 100%;

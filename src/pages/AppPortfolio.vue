@@ -1,21 +1,17 @@
 <template>
     <div ref="scrolling" class="container-fluid ">
+
         <ul class="row ms-pad gy-2 gap-4 justify-content-center">
             <ProjectCardComponent v-for="(projectItem) in elementsPaginate" :key="projectItem.id" :item="projectItem"
                 class="col-12 col-md-6 col-lg-3 m-0 my-5 project-card" />
 
         </ul>
+        
         <div class="d-flex justify-content-around my-4">
             <button :class="prevPage ?'matrix-button':'d-none'" @click="goToPage(prevPage)" :disabled="!prevPage">Pagina precedente</button>
             <button :class="nextPage ? 'matrix-button':'d-none'" @click="goToPage(nextPage)" :disabled="!nextPage">Pagina successiva</button>
         </div>
-        <!-- <ul class="pagination justify-content-center m-0">
-            <li class="page-item" v-for="page in totPage" :key="page">
-                <button class="page-link" @click="goToPage(page)">
-                    {{ page }}
-                </button>
-            </li>
-        </ul> -->
+     
     </div>
 </template>
 
@@ -77,21 +73,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .page-link {
-//     cursor: pointer;
-//     background-color: #007bff;
-//     color: white;
-//     border: none;
-//     padding: 8 16px;
-//     margin-right: 10px;
-//     border-radius: 0.25rem;
-//     transition: background-color 0.3s ease, transform 0.3s ease;
-// }
-
-// .page-link:hover {
-//     background-color: #0056b3;
-//     transform: scale(1.05);
-// }
 
 .project-card {
     transition: transform 0.3s ease;

@@ -2,7 +2,7 @@
     <div class="ms-background">
     <div class="hacker-loader translate-middle">
         <div class="loader-text">
-            <span data-text="Initializing..." class="text-glitch">Initializing...</span>
+            <span data-text="Initializing..." class="text-glitch">Caricamento...</span>
         </div>
         <div class="loader-bar">
             <div class="bar-fill"></div>

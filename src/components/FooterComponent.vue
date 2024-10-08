@@ -1,49 +1,60 @@
 <template>
-    <div>
-        <footer>
-            <div class="container-fluid">
-                <div class="row justify-content-around pt-2">
-                    <div class="col-6 d-flex flex-column justify-content-center align-items-center ">
-                        <h3>Seguimi su:</h3>
-                        <ul class="d-flex flex-grow-1 p-0 list-unstyled">
-                            <li><a href="https://github.com/Carmine-Doronzo" target="_blank"><i
-                                        class="fa-brands fa-github"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/carmine-d-oronzo-193119315" target="_blank"><i
-                                        class="fa-brands fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class=" col-6 d-flex flex-column justify-content-center align-items-center">
-                        <h3>Contatti:</h3>
-                        <ul class=" d-flex justify-content-center align-items-center flex-grow-1 p-0 list-unstyled">
-                            <li>
-                                <a class="text-decoration-none d-flex justify-content-center align-items-center "
-                                    style="color: currentColor; font-family: 'Courier New', Courier, monospace;"
-                                    href="mailTo:carmine.doronzo92@gmail.com"><i class="fs-2 fa-solid fa-at"></i><span
-                                        class="d-none d-xl-inline"
-                                        style="font-family: 'Courier New', Courier, monospace;">carmine.doronzo92@gmail.com</span></a>
 
-                            </li>
-                            <li class="pt-2 ">
-                                <h4 @click="sendMessage()" class=" d-flex justify-content-center align-items-center"><i
-                                        class="fs-2 fa-solid fa-phone"></i><span class="d-none d-lg-inline">3494600227</span></h4>
-                            </li>
-                        </ul>
-                    </div>
+    <footer>
+
+        <div class="container-fluid">
+            <div class="row justify-content-around pt-2">
+
+                <div class="col-6 d-flex flex-column justify-content-center align-items-center ">
+
+                    <h3>Seguimi su:</h3>
+
+                    <ul class="d-flex flex-grow-1 p-0 list-unstyled">
+                        <li><a href="https://github.com/Carmine-Doronzo" target="_blank"><i
+                                    class="fa-brands fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/carmine-d-oronzo-193119315" target="_blank"><i
+                                    class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
 
                 </div>
+
+                <div class=" col-6 d-flex flex-column justify-content-center align-items-center">
+
+                    <h3>Contatti:</h3>
+
+                    <ul class=" d-flex justify-content-center align-items-center flex-grow-1 p-0 list-unstyled">
+                        <li>
+                            <a class="text-decoration-none d-flex justify-content-center align-items-center "
+                                style="color: currentColor; font-family: 'Courier New', Courier, monospace;"
+                                href="mailTo:carmine.doronzo92@gmail.com"><i class="fs-2 fa-solid fa-at"></i><span
+                                    class="d-none d-xl-inline"
+                                    style="font-family: 'Courier New', Courier, monospace;">carmine.doronzo92@gmail.com</span></a>
+
+                        </li>
+                        <li class="pt-2 ">
+                            <h4 @click="sendMessage()" class=" d-flex justify-content-center align-items-center"><i
+                                    class="fs-2 fa-solid fa-phone"></i><span
+                                    class="d-none d-lg-inline">3494600227</span></h4>
+                        </li>
+                    </ul>
+
+                </div>
+
             </div>
-        </footer>
-    </div>
+        </div>
+    
+    </footer>
+
 </template>
 
 <script>
 export default {
-methods:{
-    sendMessage(){
-        window.location.href = 'whatsapp://send?phone=+393494600227'
-        console.log(window.location)
+    methods: {
+        sendMessage() {
+            window.location.href = 'whatsapp://send?phone=+393494600227'
+            console.log(window.location)
+        }
     }
-}
 }
 
 </script>

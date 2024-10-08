@@ -86,6 +86,7 @@
             </div>
 
             <div class="container-ms my-4">
+               
                 <div class="terminal_toolbar">
                     <div class="butt">
                         <button class="btn btn-color"></button>
@@ -97,6 +98,7 @@
                         +
                     </div>
                 </div>
+               
                 <div class="terminal_body">
                     <div class="terminal_promt">
                         <span class="terminal_user">carmine/admin:</span>
@@ -115,15 +117,10 @@
                             </p>
 
                         </div>
-
                     </div>
                 </div>
+            
             </div>
-
-
-
-
-
 
         </div>
     </div>
@@ -183,7 +180,6 @@ export default {
                         } else {
                             element.innerHTML += char;
                         }
-
                         // Incrementa il contatore per passare al carattere successivo
                         i++;
                     } else {
@@ -193,12 +189,8 @@ export default {
                 }, 50); // Imposta la velocità dell'animazione (50 millisecondi per carattere)
             }, delay); // Imposta il ritardo prima di iniziare l'animazione
         },
-        
-
-
-
-
-    },computed:{
+    },
+    computed:{
         timeoutDownload(){
             setTimeout(() => {
                 return true
@@ -249,9 +241,6 @@ export default {
 .icon-hover:hover {
     filter: drop-shadow(0 0 20px lime);
 }
-
-
-
 
 .container-ms {
     width: 100%;
