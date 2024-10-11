@@ -57,57 +57,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.cdnfonts.com/css/matrix');
+// @use '../style/partials/header-component'
 
-header {
-    background-color: black;
-    font-family: 'Matrix', sans-serif;
-    color: lime !important;
-    min-width: 100%;
-
-}
-
-.navbar-brand img {
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.navbar-brand img:hover {
-    transform: scale(1.1);
-}
-
-.nav-link {
-    display: flex;
-    align-items: center;
-    color: lime;
-}
-
-.nav-link i {
-    margin-right: 0.5rem;
-
-}
-
-.navbar-toggler {
-    border-color: lime;
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 255, 0, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-
-}
-
-@media (max-width: 992px) {
-    .navbar-collapse {
-        position: absolute;
-        top: 105px;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        z-index: 1000;
-    }
-
-    .navbar-nav {
-        background-color: black;
-    }
-}
 </style>

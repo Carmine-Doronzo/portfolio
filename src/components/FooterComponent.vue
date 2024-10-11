@@ -60,20 +60,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-footer {
-    background-color: black;
-}
 
-i {
-    padding: 0 10px;
-    // filter: drop-shadow(0 0 20px lime);
-    font-size: 40px;
-    color: lime;
-    transition: transform 0.3s ease;
-}
-
-i:hover {
-    filter: drop-shadow(0 0 20px lime);
-    transform: scale(1.1);
-}
 </style>

@@ -9,7 +9,7 @@
       <HeaderComponent />
       <div class="container">
         <div class="row">
-          <RouterView class="overflow-y-auto" style="color: white; height: calc(100vh - 215px);" />
+          <RouterView class="sizing-vh overflow-y-auto"  />
         </div>
       </div>
       <FooterComponent />
@@ -69,79 +69,11 @@ export default {
 
 </script>
 
-<style scoped>
-.card {
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 1px solid #0f0;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px #0f0;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+<style lang="scss" scoped>
+@use './style/general.scss';
+@use './style/partials/matrix-button';
+@use './style/partials/card-component'
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #0f0;
-}
 
-.card-title,
-.card-text,
-.btn {
-  color: #0f0;
-}
 
-.card-body {
-  font-family: 'Matrix', Courier, monospace;
-}
-
-.video-background {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100vh;
-}
-
-#myVideo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -1;
-  transform: translate(-50%, -50%);
-}
-
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: black;
-}
-
-::-webkit-scrollbar-thumb {
-  background: lime;
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #00ff00;
-}
-
-.matrix-button {
-  background-color: black;
-  color: lime;
-  border: 2px solid lime;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.matrix-button:hover {
-  background-color: lime;
-  color: black;
-}
 </style>

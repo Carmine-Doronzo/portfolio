@@ -73,41 +73,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '../style/partials/matrix-button';
+@use '../style/partials/project-card';
 
-.project-card {
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: scale(1.05);
-}
-
-
-.matrix-button {
-    background-color: black;
-    color: lime;
-    border: 2px solid lime;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    width: fit-content;
-}
-
-.matrix-button:hover {
-    background-color: lime;
-    color: black;
-}
-.ms-pad{
-    padding: 0 15px;
-}
-
-@media (min-width: 768px) {
-    .project-card:hover {
-        transform: scale(1.1);
-    }
-    .ms-pad{
-        padding: 0;
-    }
-}
 </style>
